@@ -125,14 +125,16 @@ def analyze_url(raw_url: str):
     for brand, domain in official_domains.items():
         if brand in hostname and hostname != domain and not hostname.endswith(f".{domain}"):
             reasons.append(f"브랜드명({brand})과 유사한 도메인 패턴이 감지되었습니다.")
-            score += 4
+            score += 6
             break
 
-        distance = get_levenshtein_distance(sld, brand)
-        if distance > 0 and distance <= 2 and len(sld) >= 3:
-            reasons.append(f"철자 유사도 감지: {brand}와 비슷한 형태입니다.")
-            score += 5
-            break
+    if not any(reason.startswith("브랜드명(") for reason in reasons):
+        for brand in official_domains:
+            distance = get_levenshtein_distance(sld, brand)
+            if distance > 0 and distance <= 2 and len(sld) >= 3:
+                reasons.append(f"철자 유사도 감지: {brand}와 비슷한 형태입니다.")
+                score += 5
+                break
 
     if score >= 7:
         label = "피싱 사이트일 가능성이 높습니다"
