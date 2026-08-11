@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>피싱 사이트 구분 도우미</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card hero">
+        <p class="eyebrow">안전한 인터넷 사용을 위한 도구</p>
+        <h1>피싱 사이트 구분 도우미</h1>
+        <p class="subtitle">
+          입력한 링크를 간단한 기준으로 점검해 보고, 의심 요소가 있는지 확인해 보세요.
+        </p>
+      </section>
+
+      <section class="card analyzer">
+        <label for="urlInput">URL 입력</label>
+        <div class="input-row">
+          <input
+            id="urlInput"
+            type="text"
+            placeholder="예: https://paypa1-login.com/secure"
+            autocomplete="url"
+          />
+          <button id="analyzeBtn">분석하기</button>
+        </div>
+
+        <div id="result" class="result-box" aria-live="polite">
+          결과가 여기에 표시됩니다.
+        </div>
+      </section>
+
+      <section class="card tips">
+        <h2>의심 신호 체크리스트</h2>
+        <ul>
+          <li>HTTPS가 없거나 인증서 정보가 불분명한가?</li>
+          <li>브랜드 이름이 비슷하지만 철자가 틀린가?</li>
+          <li>로그인·비밀번호·카드정보를 바로 요구하나?</li>
+          <li>긴급성, 보상, 당첨 등의 문구가 과하게 쓰이나?</li>
+          <li>IP 주소 형태로 직접 접속하나?</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
